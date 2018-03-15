@@ -12127,7 +12127,9 @@ Number of faces detected: 1
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 2:</strong> This algorithmic choice necessitates that we communicate to the user that we accept human images only when they provide a clear view of a face (otherwise, we risk having unneccessarily frustrated users!). In your opinion, is this a reasonable expectation to pose on the user? If not, can you think of a way to detect humans in images that does not necessitate an image with a clearly presented face?</p>
-<p><strong>Answer:</strong></p>
+<p><strong>Answer:</strong>
+The current face_detector is not performing well on detecting human faces and as shown above 11% of the dog images set is also classified as human face! 
+We can develope better face detector models using CNN which doesn't rely on clear image of human face and it would be able to detect human faces based on deeper features of face. For training such model, we need a lot of images with enough variations so the model can learn deep features/shapes of human face.</p>
 <p>We suggest the face detector from OpenCV as a potential way to detect human images in your algorithm, but you are free to explore other approaches, especially approaches that make use of deep learning :).  Please use the code cell below to design and test your own face detection algorithm.  If you decide to pursue this <em>optional</em> task, report performance on each of the datasets.</p>
 
 </div>
@@ -13363,7 +13365,8 @@ test_{network} = bottleneck_features['test']</code></pre>
 
 </code></pre>
 <p><strong>Question 5:</strong> Outline the steps you took to get to your final CNN architecture and your reasoning at each step.  Describe why you think the architecture is suitable for the current problem.</p>
-<p><strong>Answer:</strong></p>
+<p><strong>Answer:</strong> 
+I used Resnet50 bottleneck features and added GlobalAveragePooling layer for flattening the features followed by a Dense layer and softmax activation function. I trained the model for 20 epochs to tune the last layer of the model with 133 output nodes as dog_breed categories and using the weights from transfer learning.</p>
 
 </div>
 </div>
